@@ -1,0 +1,72 @@
+
+
+<main class="d-flex flex-column min-vh-100 bg-warning">
+  <nav class="text-center m-3">
+    <h1>
+      Weather App
+    </h1>
+  </nav>
+  <div class="container">
+          
+      <div class="d-flex align-items-center justify-content-center m-3 gap-3">
+          
+        <input class="form-control border border-dark rounded w-50" [(ngModel)] = "location" placeholder="Enter your location... ">
+        
+        <button class="btn btn-dark" (click)="onClick()">Weather</button>
+      </div>
+
+
+
+      <div class="bg-white d-flex flex-column p-5 m-5 rounded" *ngIf="weatherData">
+
+        <div class="d-flex justify-content-between">
+          <div class="d-flex">
+            <h3>{{weatherData.location.name}},</h3>
+            <h3>&nbsp;{{weatherData.location.country}}</h3>
+          </div>
+          <div class="d-flex">
+            <h3>{{weatherData.current.condition.text}}</h3>
+          </div>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <img src={{weatherData.current.condition.icon}} width="200px" height="200px">
+          <h1 class="display-1">{{weatherData.current.temp_c}}&deg;C</h1>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <h4>Feels like: {{weatherData.current.feelslike_c}}&deg;C</h4>
+        </div>
+        <div class="d-flex flex-row justify-content-between">
+          <div class="d-flex flex-column">
+            <h5>
+              Humidity: {{weatherData.current.humidity}}
+            </h5>
+            <h5>
+              Wind: {{weatherData.current.wind_kph}} kph
+            </h5>
+            <h5>
+              Wind Direction: {{weatherData.current.wind_dir}}
+            </h5>
+            <h5>
+              Visibility: {{weatherData.current.vis_km}} km
+            </h5>
+
+          </div>
+          <div>
+            <h5>
+              Precipitation: {{weatherData.current.precip_mm}} mm
+            </h5>
+            <h5>
+              Pressure: {{weatherData.current.pressure_mb}} mb
+            </h5>
+            <h5>
+              UV Index: {{weatherData.current.uv}}
+            </h5>
+            <h5>
+              Gust: {{weatherData.current.gust_kph}} kph
+            </h5>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</main>
